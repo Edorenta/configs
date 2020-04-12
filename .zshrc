@@ -1,26 +1,36 @@
 ### Aliases ###
-alias checker="bash ~/42FileChecker/42FileChecker.sh"
+
+# Ecole 42
+# alias checker="bash ~/42FileChecker/42FileChecker.sh"
+# alias clearbak='cd ~/Library/ && echo "\nBefore: " && du -sh ~/Library/ ; rm -rf *_bak_* ; echo "\nAfter: " ; du -sh ~/Library/ ;  cd -'
+# alias leak_check="valgrind --tool=memcheck --leak-check=full --track-origins=yes --show-leak-kinds=indirect"
+# MAIL="$USER@student.42.fr"
+# export MAIL
+# export PATH=/Users/pde-rent/.brew/bin:/Users/pde-rent/.brew/bin:/Users/pde-rent/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki
+# source $HOME/.brewconfig.zsh
+
+
+alias openvscode="open -a vscode"
+alias opensubl="open -a subl"
+alias openidea="open -a idea"
+
+alias termconfig="sudo subl ~/.config/alacritty/alacritty.yml"
 alias zshconfig="vim ~/.zshrc"
-alias docs="cd ~/Documents"
-alias clr="clear"
 alias zshsource="source ~/.zshrc"
-alias clearbak='cd ~/Library/ && echo "\nBefore: " && du -sh ~/Library/ ; rm -rf *_bak_* ; echo "\nAfter: " ; du -sh ~/Library/ ;  cd -'
-alias leak_check="valgrind --tool=memcheck --leak-check=full --track-origins=yes --show-leak-kinds=indirect"
-alias openvs="open -a Visual\ Studio\ Code"
-alias backup_config="cd ~/Documents/side_projects && rm -rf configs && git clone https://github.com/Edorenta/rc_configs.git configs && cp ~/.zshrc configs/zshrc && cp ~/.vimrc configs/vimrc && cd ~/Documents/side_projects/configs/ && git add * && git commit -m 'conf' && git push origin master"
-alias goteam="cd ~/Documents/cursus_42/teamwork"
-alias golib="cd ~/Documents/cursus_42/libft"
-alias gofillit="cd ~/Documents/cursus_42/fillit"
-alias gognl="cd ~/Documents/cursus_42/get_next_line"
-alias gofdf="cd ~/Documents/cursus_42/fil_de_fer"
-alias goprintf="cd ~/Documents/cursus_42/ft_printf"
-alias gomuffin="cd ~/Documents/side_projects/muffin"
-alias gccmlx="gcc -lmlx -framework OpenGL -framework AppKit"
-alias mmlx="man /usr/share/man/man3/mlx.1"
-alias mmlx_loop="man /usr/share/man/man3/mlx_loop.1"
-alias mmlx_new_image="man /usr/share/man/man3/mlx_new_image.1"
-alias mmlx_new_window="man /usr/share/man/man3/mlx_new_window.1"
-alias mmlx_pixel_put="man /usr/share/man/man3/mlx_pixel_put.1"
+alias godocuments="cd ~/Documents"
+alias godesktop="cd ~/Desktop"
+alias godownloads="cd ~/Downloads"
+alias goprojects="cd ~/Projects"
+
+alias vi='vim'
+alias python='python3.6'
+alias py='python3.6'
+alias pip3='python3.6 -m pip'
+alias idea='sh /usr/local/jetbrains/idea-IU-193.6911.18/bin/idea.sh'
+
+alias clr="clear"
+alias cls="clear"
+alias backup_config="cd ~/Documents/Projects && rm -rf configs && git clone https://github.com/edorenta/configs.git configs && cp ~/.zshrc configs/zshrc && cp ~/.vimrc configs/vimrc && cd ~/Documents/Projects/configs/ && git add -A && git commit -m 'config backup' && git push origin master"
 ### Functions ###
 #function tail_ls { ls -l "$1" | tail; }
 # prints tail of the ls funct onto a directory
@@ -48,11 +58,11 @@ ZSH_THEME="bureau"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
+
+### Exports
 USER=$(/usr/bin/whoami)
 export USER
-MAIL="$USER@student.42.fr"
-export MAIL
-export PATH=/Users/pde-rent/.brew/bin:/Users/pde-rent/.brew/bin:/Users/pde-rent/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/munki
-
-# Load Homebrew config script
-source $HOME/.brewconfig.zsh
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export DENO_INSTALL="/home/pde-rent/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
