@@ -40,6 +40,7 @@ alias godownloads="cd $HOME_DIR/Downloads"
 alias goprojects="cd $HOME_DIR/Projects"
 alias govideos="cd $HOME_DIR/Projects"
 alias gomusic="cd $HOME_DIR/Projects"
+alias goconfig="cd $HOME_DIR/configs"
 
 alias vi='vim'
 alias python='python3.6'
@@ -51,20 +52,34 @@ alias clr="clear"
 alias cls="clear"
 
 ### Functions ###
-backup_config() {
-  if [[ -d $HOME_DIR/configs ]]; then
-      echo "$HOME_DIR/configs already exists"
-      cd $HOME_DIR/configs
-      if git rev-parse --git-dir > /dev/null 2>&1; then
-        echo "$HOME_DIR/configs is a valid repository"
-      else
-        echo "error: $HOME_DIR/configs is not a git repository. Exiting..."
-        return
-      fi
+
+git_dir_exists() {
+  local git_dir=$1
+  if [[ -d $1 ]]; then
+    cd $1
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+      cd --
+      return 0 # true
+    else
+      cd --
+      return 1 # false
+    fi
   else
-    git clone "https://github.com/edorenta/configs" $HOME_DIR/configs
-    cd $HOME_DIR/configs
+    return 1 # false
   fi
+}
+
+backup_config() {
+  if ( git_dir_exists "$HOME_DIR/configs" ); then
+      echo "$HOME_DIR/configs local git found"
+  elif [[ -d $HOME_DIR/configs ]]; then
+    echo "error: $HOME_DIR/configs is not a git repository. Exiting..."
+    return
+  else
+    echo "$HOME_DIR/configs local git not found, cloning..."
+    git clone "https://github.com/edorenta/configs" $HOME_DIR/configs
+  fi
+  cd $HOME_DIR/configs
   cp ~/{.zshrc,.vimrc} .
   git add -A
   git commit -m 'config backup'
