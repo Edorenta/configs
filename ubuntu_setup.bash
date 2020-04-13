@@ -18,13 +18,13 @@ curl -fsSL https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 curl -fsSL https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-curl -fsSL https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
-curl -fsSL http://deb.playonlinux.com/public.gpg | sudo apt-key add -
+# curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+# curl -fsSL https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+# curl -fsSL http://deb.playonlinux.com/public.gpg | sudo apt-key add -
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 sudo apt-key adv --recv-keys --keyserver pgp.surfnet.nl 249AD24C
 
-sudo curl http://deb.playonlinux.com/playonlinux_bionic.list -o /etc/apt/sources.list.d/playonlinux.list
+# sudo curl http://deb.playonlinux.com/playonlinux_bionic.list -o /etc/apt/sources.list.d/playonlinux.list
 echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)"-pgdg main | sudo tee /etc/apt/sources.list.d/pgdg.list
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 echo "deb https://download.mono-project.com/repo/ubuntu stable-$(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
